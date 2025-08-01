@@ -15,6 +15,10 @@ run/main_scene="uid://ma877nfxlf16"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+mouse_cursor/custom_image="uid://dn5fr8loq6pbn"
+
 [input]
 
 Shoot={
