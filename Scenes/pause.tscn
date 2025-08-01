@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgebshndmyuv1"]
+
+[ext_resource type="LabelSettings" uid="uid://emksdbqkuufj" path="res://Assets/Themes/Label/tittleSettings.tres" id="1_l2mpd"]
+[ext_resource type="Theme" uid="uid://basi5lxyxy175" path="res://Assets/Themes/Button/buttonMainMenu.tres" id="2_5a6ek"]
+
+[node name="Pause" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Content" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -64.0
+offset_right = 48.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 45
+
+[node name="Label" type="Label" parent="Content"]
+layout_mode = 2
+text = "- Paused -"
+label_settings = ExtResource("1_l2mpd")
+
+[node name="Buttons" type="VBoxContainer" parent="Content"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Resume" type="Button" parent="Content/Buttons"]
+layout_mode = 2
+theme = ExtResource("2_5a6ek")
+text = "Resume"
+
+[node name="Options" type="Button" parent="Content/Buttons"]
+layout_mode = 2
+theme = ExtResource("2_5a6ek")
+text = "Options"
+
+[node name="MainMenu" type="Button" parent="Content/Buttons"]
+layout_mode = 2
+theme = ExtResource("2_5a6ek")
+text = "Main menu"
