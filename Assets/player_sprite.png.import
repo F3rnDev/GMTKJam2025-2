@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjqh41wcgn6bg"
-path="res://.godot/imported/infinity.png-d0d3cc0456272438f789343de8b125af.ctex"
+uid="uid://qkqsoppjder"
+path="res://.godot/imported/player_sprite.png-76af5692b6ea8e1b0c17e0c98957c5b5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://infinity.png"
-dest_files=["res://.godot/imported/infinity.png-d0d3cc0456272438f789343de8b125af.ctex"]
+source_file="res://Assets/player_sprite.png"
+dest_files=["res://.godot/imported/player_sprite.png-76af5692b6ea8e1b0c17e0c98957c5b5.ctex"]
 
 [params]
 
