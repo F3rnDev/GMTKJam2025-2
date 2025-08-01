@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://b3cnfxheolvfj"]
+
+[ext_resource type="Script" uid="uid://c6nx6kri0op30" path="res://Scripts/projectile.gd" id="1_btnol"]
+[ext_resource type="Shader" uid="uid://3rgw6lig5giv" path="res://projectile.gdshader" id="2_l304e"]
+[ext_resource type="Texture2D" uid="uid://b3kugd8jo50dx" path="res://Assets/projectile_sprite.png" id="3_pm5xe"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dgwo2"]
+shader = ExtResource("2_l304e")
+shader_parameter/sourceColor = Color(1, 1, 1, 1)
+shader_parameter/hint = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_btnol"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_btnol"]
+
+[node name="Projectile" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_btnol")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_dgwo2")
+texture = ExtResource("3_pm5xe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_btnol")
+
+[node name="Hurtbox" type="Area2D" parent="." groups=["Projectile"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_btnol")
+debug_color = Color(0.804611, 0.41657, 0.0172676, 0.42)
