@@ -1,14 +1,13 @@
 extends CharacterBody2D
 
 @export var bulletSpeed = 500.0
-var direction:float = 0.0
-var spawnPos:Vector2 = Vector2.ZERO
-
+var direction: Vector2 = Vector2.ZERO
+var spawnPos: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	global_position = spawnPos
+	rotation = direction.angle()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	velocity = Vector2(0, -bulletSpeed).rotated(direction)
+	velocity = direction * bulletSpeed
 	move_and_slide()
