@@ -1,7 +1,13 @@
 extends AnimatedSprite2D
 
 @onready var projectileRef = preload("res://Nodes/projectile.tscn")
+@onready var dieParticle = preload("res://Nodes/dieParticle.tscn")
 @export var shootSpeed = 5.0
+
+@export var maxHealth = 3.0
+var health = maxHealth
+
+var currentMoney = 0
 
 func _ready() -> void:
 	$Speed.wait_time = shootSpeed
@@ -27,4 +33,27 @@ func shootBullet():
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Enemy"):
+		area.get_parent().killEnemy()
+		
+		spawnDieParticle()
+		receiveHit()
+
+func receiveHit():
+	health -= 1
+	
+	get_parent().updatePlayerLife()
+	get_parent().shake()
+	
+	if health <= 0:
+		get_parent().roundRunning = false
 		queue_free()
+
+func spawnDieParticle():
+	var particle = dieParticle.instantiate()
+	particle.global_position = global_position
+	
+	get_tree().current_scene.add_child(particle)
+
+func setMoney(amount):
+	#IntegrateUpdate Later
+	currentMoney += amount

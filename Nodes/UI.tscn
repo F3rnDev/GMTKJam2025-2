@@ -1,0 +1,144 @@
+[gd_scene load_steps=9 format=3 uid="uid://ba5ns1vmm5uri"]
+
+[ext_resource type="FontFile" uid="uid://burjh4d37tdqd" path="res://Assets/Font/PressStart2P-Regular.ttf" id="1_8ud23"]
+[ext_resource type="Texture2D" uid="uid://dvkewiavm3afl" path="res://Assets/Art/money.png" id="2_beqv6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ktit6"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ud23"]
+bg_color = Color(1, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_beqv6"]
+font = ExtResource("1_8ud23")
+
+[sub_resource type="LabelSettings" id="LabelSettings_8ud23"]
+font = ExtResource("1_8ud23")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+outline_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_omug6"]
+font = ExtResource("1_8ud23")
+font_color = Color(0, 0, 0, 1)
+outline_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_xlqnh"]
+font = ExtResource("1_8ud23")
+font_color = Color(0, 0, 0, 1)
+outline_size = 8
+
+[node name="Ui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LifeBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -42.0
+offset_right = 422.0
+offset_bottom = -15.0
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_ktit6")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8ud23")
+value = 20.0
+show_percentage = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LifeBar"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="LifeValue" type="Label" parent="LifeBar/HBoxContainer"]
+layout_mode = 2
+text = "3"
+label_settings = SubResource("LabelSettings_beqv6")
+
+[node name="Bar" type="Label" parent="LifeBar/HBoxContainer"]
+layout_mode = 2
+text = "/"
+label_settings = SubResource("LabelSettings_beqv6")
+
+[node name="MaxLifeValue" type="Label" parent="LifeBar/HBoxContainer"]
+layout_mode = 2
+text = "3"
+label_settings = SubResource("LabelSettings_beqv6")
+
+[node name="Wave Count" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -252.0
+offset_right = 252.0
+offset_bottom = 72.0
+grow_horizontal = 2
+text = "WAVE 01"
+label_settings = SubResource("LabelSettings_8ud23")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Enemies Left" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_top = 64.0
+offset_right = 128.0
+offset_bottom = 99.0
+grow_horizontal = 2
+text = "- Enemies Left -
+03/05"
+label_settings = SubResource("LabelSettings_omug6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -106.0
+offset_top = -42.0
+offset_bottom = -5.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+text = "1000"
+label_settings = SubResource("LabelSettings_xlqnh")
+vertical_alignment = 1
+
+[node name="Coin" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_beqv6")
+expand_mode = 2
+stretch_mode = 5

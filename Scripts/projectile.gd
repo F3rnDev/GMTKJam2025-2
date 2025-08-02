@@ -10,4 +10,5 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	velocity = direction * bulletSpeed
+	rotation_degrees += 1
 	move_and_slide()

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bmssq273lecyq"]
 
-[ext_resource type="Texture2D" uid="uid://bjqh41wcgn6bg" path="res://Assets/enemy_sprite.png" id="1_be7n0"]
 [ext_resource type="Script" uid="uid://ddp1khhwm2ipn" path="res://Scripts/enemy.gd" id="1_hrxw6"]
+[ext_resource type="Texture2D" uid="uid://bjqh41wcgn6bg" path="res://Assets/Art/enemy_sprite.png" id="2_hrxw6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_be7n0"]
 
@@ -13,7 +13,7 @@ collision_mask = 0
 script = ExtResource("1_hrxw6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_be7n0")
+texture = ExtResource("2_hrxw6")
 
 [node name="HitHurtbox" type="Area2D" parent="." groups=["Enemy"]]
 

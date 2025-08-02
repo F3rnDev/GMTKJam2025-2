@@ -1,8 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://ma877nfxlf16"]
+[gd_scene load_steps=6 format=3 uid="uid://ma877nfxlf16"]
 
 [ext_resource type="Script" uid="uid://b6xtaavgwps3f" path="res://Scripts/game.gd" id="1_1sokt"]
 [ext_resource type="PackedScene" uid="uid://bk1kejl534llf" path="res://Nodes/player.tscn" id="1_80nbo"]
-[ext_resource type="PackedScene" uid="uid://bmssq273lecyq" path="res://Nodes/enemy.tscn" id="2_s24rg"]
+[ext_resource type="PackedScene" uid="uid://ba5ns1vmm5uri" path="res://Nodes/UI.tscn" id="3_1sokt"]
+[ext_resource type="Script" uid="uid://dxw1rbt8ceqkj" path="res://Scripts/game_camera.gd" id="3_wi60h"]
+
+[sub_resource type="Environment" id="Environment_s24rg"]
+background_mode = 3
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 1.93
+glow_strength = 0.92
+glow_bloom = 1.0
+glow_blend_mode = 0
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_1sokt")
@@ -10,5 +20,44 @@ script = ExtResource("1_1sokt")
 [node name="Player" parent="." instance=ExtResource("1_80nbo")]
 position = Vector2(568, 304)
 
-[node name="Enemy" parent="." node_paths=PackedStringArray("playerRef") instance=ExtResource("2_s24rg")]
-playerRef = NodePath("../Player")
+[node name="SpawnTime" type="Timer" parent="."]
+one_shot = true
+
+[node name="Spawners" type="Node2D" parent="."]
+
+[node name="Spawner 1" type="Marker2D" parent="Spawners"]
+position = Vector2(1192, 683)
+
+[node name="Spawner 2" type="Marker2D" parent="Spawners"]
+position = Vector2(-31, 672)
+
+[node name="Spawner 3" type="Marker2D" parent="Spawners"]
+position = Vector2(-33, -13)
+
+[node name="Spawner 4" type="Marker2D" parent="Spawners"]
+position = Vector2(1181, -11)
+
+[node name="Spawner 5" type="Marker2D" parent="Spawners"]
+position = Vector2(1212, 324)
+
+[node name="Spawner 6" type="Marker2D" parent="Spawners"]
+position = Vector2(563, -38)
+
+[node name="Spawner 7" type="Marker2D" parent="Spawners"]
+position = Vector2(-84, 318)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="NextWaveTime" type="Timer" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_s24rg")
+
+[node name="GameCamera" type="Camera2D" parent="."]
+position = Vector2(568, 304)
+zoom = Vector2(1.1, 1.1)
+script = ExtResource("3_wi60h")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Ui" parent="CanvasLayer" instance=ExtResource("3_1sokt")]
