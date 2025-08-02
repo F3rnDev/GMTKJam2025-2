@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgebshndmyuv1"]
+[gd_scene load_steps=3 format=3 uid="uid://b6oii46m07jqc"]
 
-[ext_resource type="LabelSettings" uid="uid://emksdbqkuufj" path="res://Assets/Themes/Label/Options/tittleSettings.tres" id="1_l2mpd"]
-[ext_resource type="Theme" uid="uid://basi5lxyxy175" path="res://Assets/Themes/Button/buttonMainMenu.tres" id="2_5a6ek"]
+[ext_resource type="LabelSettings" uid="uid://emksdbqkuufj" path="res://Assets/Themes/Label/Options/tittleSettings.tres" id="1_8fo1c"]
+[ext_resource type="Theme" uid="uid://basi5lxyxy175" path="res://Assets/Themes/Button/buttonMainMenu.tres" id="2_ek8ke"]
 
-[node name="Pause" type="Control"]
+[node name="GameOver" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,34 +27,31 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -48.0
-offset_top = -64.0
-offset_right = 48.0
-offset_bottom = 64.0
+offset_left = -468.0
+offset_top = -36.0
+offset_right = 468.0
+offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 45
 
-[node name="Label" type="Label" parent="Content"]
+[node name="Title" type="Label" parent="Content"]
 layout_mode = 2
-text = "- Paused -"
-label_settings = ExtResource("1_l2mpd")
+text = "- GAME OVER -"
+label_settings = ExtResource("1_8fo1c")
 
 [node name="Buttons" type="VBoxContainer" parent="Content"]
 layout_mode = 2
+size_flags_vertical = 4
 theme_override_constants/separation = 40
+alignment = 1
 
-[node name="Resume" type="Button" parent="Content/Buttons"]
+[node name="Restart" type="Button" parent="Content/Buttons"]
 layout_mode = 2
-theme = ExtResource("2_5a6ek")
-text = "Resume"
-
-[node name="Options" type="Button" parent="Content/Buttons"]
-layout_mode = 2
-theme = ExtResource("2_5a6ek")
-text = "Options"
+theme = ExtResource("2_ek8ke")
+text = "Restart"
 
 [node name="MainMenu" type="Button" parent="Content/Buttons"]
 layout_mode = 2
-theme = ExtResource("2_5a6ek")
+theme = ExtResource("2_ek8ke")
 text = "Main menu"
