@@ -18,6 +18,8 @@ config/icon="res://icon.svg"
 [display]
 
 window/stretch/mode="viewport"
+window/size/viewport_width=1400
+window/size/viewport_height=700
 mouse_cursor/custom_image="uid://dn5fr8loq6pbn"
 mouse_cursor/custom_image_hotspot=Vector2(16, 16)
 

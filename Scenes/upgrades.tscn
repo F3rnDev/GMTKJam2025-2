@@ -1,0 +1,230 @@
+[gd_scene load_steps=13 format=3 uid="uid://ckjccqkkn3fte"]
+
+[ext_resource type="Script" uid="uid://dhdkgj0l4fpog" path="res://Scripts/Screen/upgradeScreen.gd" id="1_mi3g6"]
+[ext_resource type="LabelSettings" uid="uid://bylpc0v406pfn" path="res://Assets/Themes/Label/Upgrade/tittleUpgradesSettings.tres" id="1_mstou"]
+[ext_resource type="Theme" uid="uid://di3qk7otridoe" path="res://Assets/Themes/Panel/panelUpgrades.tres" id="1_qnnf3"]
+[ext_resource type="Theme" uid="uid://dscf681dqd0c6" path="res://Assets/Themes/Panel/panelOption01Upgrades.tres" id="3_l0xsu"]
+[ext_resource type="LabelSettings" uid="uid://beikfgv4wu4n4" path="res://Assets/Themes/Label/Upgrade/tittleOptionUpgradesSettings.tres" id="4_ua6wq"]
+[ext_resource type="Texture2D" uid="uid://dg3j5drlyl2hm" path="res://Assets/Art/heart_icon.png" id="5_copim"]
+[ext_resource type="Theme" uid="uid://cnta1fssn1ngp" path="res://Assets/Themes/Panel/panelOption02Upgrades.tres" id="5_rmsmy"]
+[ext_resource type="Theme" uid="uid://bup75y2ek0q03" path="res://Assets/Themes/RichText/richTextUpgrades.tres" id="5_sy0g7"]
+[ext_resource type="LabelSettings" uid="uid://bjmu45x5kyi2j" path="res://Assets/Themes/Label/Upgrade/labelSettings.tres" id="6_copim"]
+[ext_resource type="Theme" uid="uid://vhypvojj45yl" path="res://Assets/Themes/Panel/panelOption03Upgrades.tres" id="6_sy0g7"]
+[ext_resource type="Texture2D" uid="uid://fns3clajv3py" path="res://Assets/Art/attack_speed_icon.png" id="9_jr3vf"]
+[ext_resource type="Texture2D" uid="uid://bfojfhmm6m8k1" path="res://Assets/Art/loot_icon.png" id="11_mi3g6"]
+
+[node name="Upgrades" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mi3g6")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.494118)
+
+[node name="Content" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="Wave" type="Label" parent="Content"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "Wave 00"
+label_settings = ExtResource("1_mstou")
+
+[node name="Panel" type="Panel" parent="Content"]
+custom_minimum_size = Vector2(900, 500)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_qnnf3")
+
+[node name="MarginContainer" type="MarginContainer" parent="Content/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Upgrades" type="HBoxContainer" parent="Content/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="LifeGain" type="Panel" parent="Content/Panel/MarginContainer/Upgrades"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_l0xsu")
+
+[node name="Margin" type="MarginContainer" parent="Content/Panel/MarginContainer/Upgrades/LifeGain"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Content" type="VBoxContainer" parent="Content/Panel/MarginContainer/Upgrades/LifeGain/Margin"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Content/Panel/MarginContainer/Upgrades/LifeGain/Margin/Content"]
+custom_minimum_size = Vector2(244, 70)
+layout_mode = 2
+size_flags_vertical = 1
+text = "LIFE"
+label_settings = ExtResource("4_ua6wq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Content/Panel/MarginContainer/Upgrades/LifeGain/Margin/Content"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+texture = ExtResource("5_copim")
+stretch_mode = 5
+
+[node name="Description" type="RichTextLabel" parent="Content/Panel/MarginContainer/Upgrades/LifeGain/Margin/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("5_sy0g7")
+text = "Increases health by 10%
+
+Perfect for those who want to go further
+"
+fit_content = true
+
+[node name="Cost" type="Label" parent="Content/Panel/MarginContainer/Upgrades/LifeGain/Margin/Content"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "R$ 100,00"
+label_settings = ExtResource("6_copim")
+
+[node name="AttackSpeed" type="Panel" parent="Content/Panel/MarginContainer/Upgrades"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("5_rmsmy")
+
+[node name="Margin" type="MarginContainer" parent="Content/Panel/MarginContainer/Upgrades/AttackSpeed"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Content" type="VBoxContainer" parent="Content/Panel/MarginContainer/Upgrades/AttackSpeed/Margin"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Content/Panel/MarginContainer/Upgrades/AttackSpeed/Margin/Content"]
+custom_minimum_size = Vector2(244, 70)
+layout_mode = 2
+size_flags_vertical = 1
+text = "ATTACK
+SPEED"
+label_settings = ExtResource("4_ua6wq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Content/Panel/MarginContainer/Upgrades/AttackSpeed/Margin/Content"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_vertical = 6
+texture = ExtResource("9_jr3vf")
+stretch_mode = 5
+
+[node name="Description" type="RichTextLabel" parent="Content/Panel/MarginContainer/Upgrades/AttackSpeed/Margin/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("5_sy0g7")
+text = "Increases attack speed by 5%
+
+For those who can't wait"
+fit_content = true
+
+[node name="Cost" type="Label" parent="Content/Panel/MarginContainer/Upgrades/AttackSpeed/Margin/Content"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "R$ 100,00"
+label_settings = ExtResource("6_copim")
+
+[node name="MoreLoot" type="Panel" parent="Content/Panel/MarginContainer/Upgrades"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("6_sy0g7")
+
+[node name="Margin" type="MarginContainer" parent="Content/Panel/MarginContainer/Upgrades/MoreLoot"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Content" type="VBoxContainer" parent="Content/Panel/MarginContainer/Upgrades/MoreLoot/Margin"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Content/Panel/MarginContainer/Upgrades/MoreLoot/Margin/Content"]
+custom_minimum_size = Vector2(244, 70)
+layout_mode = 2
+size_flags_vertical = 1
+text = "LOOT"
+label_settings = ExtResource("4_ua6wq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Content/Panel/MarginContainer/Upgrades/MoreLoot/Margin/Content"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+size_flags_vertical = 6
+texture = ExtResource("11_mi3g6")
+stretch_mode = 5
+
+[node name="Description" type="RichTextLabel" parent="Content/Panel/MarginContainer/Upgrades/MoreLoot/Margin/Content"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("5_sy0g7")
+text = "Increases 2 coins for each enemy defeated
+
+For those who are greedy"
+fit_content = true
+
+[node name="Cost" type="Label" parent="Content/Panel/MarginContainer/Upgrades/MoreLoot/Margin/Content"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "R$ 100,00"
+label_settings = ExtResource("6_copim")
+
+[connection signal="gui_input" from="Content/Panel/MarginContainer/Upgrades/LifeGain" to="." method="_on_life_gain_gui_input"]
+[connection signal="gui_input" from="Content/Panel/MarginContainer/Upgrades/AttackSpeed" to="." method="_on_attack_speed_gui_input"]
+[connection signal="gui_input" from="Content/Panel/MarginContainer/Upgrades/MoreLoot" to="." method="_on_more_loot_gui_input"]

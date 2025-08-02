@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bup75y2ek0q03"]
+
+[ext_resource type="FontFile" uid="uid://burjh4d37tdqd" path="res://Assets/Font/PressStart2P-Regular.ttf" id="1_nb11x"]
+
+[resource]
+RichTextLabel/constants/line_separation = 5
+RichTextLabel/font_sizes/normal_font_size = 12
+RichTextLabel/fonts/normal_font = ExtResource("1_nb11x")
