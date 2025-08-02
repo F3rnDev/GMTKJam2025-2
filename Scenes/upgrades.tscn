@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://ckjccqkkn3fte"]
+[gd_scene load_steps=13 format=3 uid="uid://ckjccqkkn3fte"]
 
+[ext_resource type="Script" uid="uid://dhdkgj0l4fpog" path="res://Scripts/Screen/upgradeScreen.gd" id="1_mi3g6"]
 [ext_resource type="LabelSettings" uid="uid://bylpc0v406pfn" path="res://Assets/Themes/Label/Upgrade/tittleUpgradesSettings.tres" id="1_mstou"]
 [ext_resource type="Theme" uid="uid://di3qk7otridoe" path="res://Assets/Themes/Panel/panelUpgrades.tres" id="1_qnnf3"]
 [ext_resource type="Theme" uid="uid://dscf681dqd0c6" path="res://Assets/Themes/Panel/panelOption01Upgrades.tres" id="3_l0xsu"]
@@ -19,6 +20,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_mi3g6")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -68,12 +70,12 @@ theme_override_constants/margin_bottom = 20
 [node name="Upgrades" type="HBoxContainer" parent="Content/Panel/MarginContainer"]
 layout_mode = 2
 
-[node name="Upgrade1" type="Panel" parent="Content/Panel/MarginContainer/Upgrades"]
+[node name="LifeGain" type="Panel" parent="Content/Panel/MarginContainer/Upgrades"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("3_l0xsu")
 
-[node name="Margin" type="MarginContainer" parent="Content/Panel/MarginContainer/Upgrades/Upgrade1"]
+[node name="Margin" type="MarginContainer" parent="Content/Panel/MarginContainer/Upgrades/LifeGain"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -85,10 +87,10 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="Content" type="VBoxContainer" parent="Content/Panel/MarginContainer/Upgrades/Upgrade1/Margin"]
+[node name="Content" type="VBoxContainer" parent="Content/Panel/MarginContainer/Upgrades/LifeGain/Margin"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="Content/Panel/MarginContainer/Upgrades/Upgrade1/Margin/Content"]
+[node name="Title" type="Label" parent="Content/Panel/MarginContainer/Upgrades/LifeGain/Margin/Content"]
 custom_minimum_size = Vector2(244, 70)
 layout_mode = 2
 size_flags_vertical = 1
@@ -97,13 +99,13 @@ label_settings = ExtResource("4_ua6wq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Icon" type="TextureRect" parent="Content/Panel/MarginContainer/Upgrades/Upgrade1/Margin/Content"]
+[node name="Icon" type="TextureRect" parent="Content/Panel/MarginContainer/Upgrades/LifeGain/Margin/Content"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 texture = ExtResource("5_copim")
 stretch_mode = 5
 
-[node name="Description" type="RichTextLabel" parent="Content/Panel/MarginContainer/Upgrades/Upgrade1/Margin/Content"]
+[node name="Description" type="RichTextLabel" parent="Content/Panel/MarginContainer/Upgrades/LifeGain/Margin/Content"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("5_sy0g7")
@@ -113,18 +115,18 @@ Perfect for those who want to go further
 "
 fit_content = true
 
-[node name="Cost" type="Label" parent="Content/Panel/MarginContainer/Upgrades/Upgrade1/Margin/Content"]
+[node name="Cost" type="Label" parent="Content/Panel/MarginContainer/Upgrades/LifeGain/Margin/Content"]
 layout_mode = 2
 size_flags_vertical = 8
 text = "R$ 100,00"
 label_settings = ExtResource("6_copim")
 
-[node name="Upgrade2" type="Panel" parent="Content/Panel/MarginContainer/Upgrades"]
+[node name="AttackSpeed" type="Panel" parent="Content/Panel/MarginContainer/Upgrades"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("5_rmsmy")
 
-[node name="Margin" type="MarginContainer" parent="Content/Panel/MarginContainer/Upgrades/Upgrade2"]
+[node name="Margin" type="MarginContainer" parent="Content/Panel/MarginContainer/Upgrades/AttackSpeed"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -136,10 +138,10 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="Content" type="VBoxContainer" parent="Content/Panel/MarginContainer/Upgrades/Upgrade2/Margin"]
+[node name="Content" type="VBoxContainer" parent="Content/Panel/MarginContainer/Upgrades/AttackSpeed/Margin"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="Content/Panel/MarginContainer/Upgrades/Upgrade2/Margin/Content"]
+[node name="Title" type="Label" parent="Content/Panel/MarginContainer/Upgrades/AttackSpeed/Margin/Content"]
 custom_minimum_size = Vector2(244, 70)
 layout_mode = 2
 size_flags_vertical = 1
@@ -149,14 +151,14 @@ label_settings = ExtResource("4_ua6wq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Icon" type="TextureRect" parent="Content/Panel/MarginContainer/Upgrades/Upgrade2/Margin/Content"]
+[node name="Icon" type="TextureRect" parent="Content/Panel/MarginContainer/Upgrades/AttackSpeed/Margin/Content"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 size_flags_vertical = 6
 texture = ExtResource("9_jr3vf")
 stretch_mode = 5
 
-[node name="Description" type="RichTextLabel" parent="Content/Panel/MarginContainer/Upgrades/Upgrade2/Margin/Content"]
+[node name="Description" type="RichTextLabel" parent="Content/Panel/MarginContainer/Upgrades/AttackSpeed/Margin/Content"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("5_sy0g7")
@@ -165,18 +167,19 @@ text = "Increases attack speed by 5%
 For those who can't wait"
 fit_content = true
 
-[node name="Cost" type="Label" parent="Content/Panel/MarginContainer/Upgrades/Upgrade2/Margin/Content"]
+[node name="Cost" type="Label" parent="Content/Panel/MarginContainer/Upgrades/AttackSpeed/Margin/Content"]
 layout_mode = 2
 size_flags_vertical = 8
 text = "R$ 100,00"
 label_settings = ExtResource("6_copim")
 
-[node name="Upgrade3" type="Panel" parent="Content/Panel/MarginContainer/Upgrades"]
+[node name="MoreLoot" type="Panel" parent="Content/Panel/MarginContainer/Upgrades"]
+process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("6_sy0g7")
 
-[node name="Margin" type="MarginContainer" parent="Content/Panel/MarginContainer/Upgrades/Upgrade3"]
+[node name="Margin" type="MarginContainer" parent="Content/Panel/MarginContainer/Upgrades/MoreLoot"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -188,10 +191,10 @@ theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
-[node name="Content" type="VBoxContainer" parent="Content/Panel/MarginContainer/Upgrades/Upgrade3/Margin"]
+[node name="Content" type="VBoxContainer" parent="Content/Panel/MarginContainer/Upgrades/MoreLoot/Margin"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="Content/Panel/MarginContainer/Upgrades/Upgrade3/Margin/Content"]
+[node name="Title" type="Label" parent="Content/Panel/MarginContainer/Upgrades/MoreLoot/Margin/Content"]
 custom_minimum_size = Vector2(244, 70)
 layout_mode = 2
 size_flags_vertical = 1
@@ -200,14 +203,14 @@ label_settings = ExtResource("4_ua6wq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Icon" type="TextureRect" parent="Content/Panel/MarginContainer/Upgrades/Upgrade3/Margin/Content"]
+[node name="Icon" type="TextureRect" parent="Content/Panel/MarginContainer/Upgrades/MoreLoot/Margin/Content"]
 custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
 size_flags_vertical = 6
 texture = ExtResource("11_mi3g6")
 stretch_mode = 5
 
-[node name="Description" type="RichTextLabel" parent="Content/Panel/MarginContainer/Upgrades/Upgrade3/Margin/Content"]
+[node name="Description" type="RichTextLabel" parent="Content/Panel/MarginContainer/Upgrades/MoreLoot/Margin/Content"]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("5_sy0g7")
@@ -216,8 +219,12 @@ text = "Increases 2 coins for each enemy defeated
 For those who are greedy"
 fit_content = true
 
-[node name="Cost" type="Label" parent="Content/Panel/MarginContainer/Upgrades/Upgrade3/Margin/Content"]
+[node name="Cost" type="Label" parent="Content/Panel/MarginContainer/Upgrades/MoreLoot/Margin/Content"]
 layout_mode = 2
 size_flags_vertical = 8
 text = "R$ 100,00"
 label_settings = ExtResource("6_copim")
+
+[connection signal="gui_input" from="Content/Panel/MarginContainer/Upgrades/LifeGain" to="." method="_on_life_gain_gui_input"]
+[connection signal="gui_input" from="Content/Panel/MarginContainer/Upgrades/AttackSpeed" to="." method="_on_attack_speed_gui_input"]
+[connection signal="gui_input" from="Content/Panel/MarginContainer/Upgrades/MoreLoot" to="." method="_on_more_loot_gui_input"]

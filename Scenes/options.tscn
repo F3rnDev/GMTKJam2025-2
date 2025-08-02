@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://dmt5x87e0n4s4"]
+[gd_scene load_steps=11 format=3 uid="uid://dmt5x87e0n4s4"]
 
 [ext_resource type="Theme" uid="uid://donkpon7h18o1" path="res://Assets/Themes/Panel/panelOptions.tres" id="1_663nc"]
+[ext_resource type="Script" uid="uid://cu4nfpimu8dq6" path="res://Scripts/Screen/options.gd" id="1_hvj8k"]
 [ext_resource type="LabelSettings" uid="uid://cmorhdd1o2ta2" path="res://Assets/Themes/Label/Options/tittleOptionSettings.tres" id="1_ww8vx"]
 [ext_resource type="LabelSettings" uid="uid://dd0p8lijyqm0u" path="res://Assets/Themes/Label/Options/tittle02OptionSettings.tres" id="2_kftxf"]
 [ext_resource type="FontFile" uid="uid://burjh4d37tdqd" path="res://Assets/Font/PressStart2P-Regular.ttf" id="3_663nc"]
@@ -26,6 +27,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_hvj8k")
 
 [node name="Panel" type="Panel" parent="."]
 custom_minimum_size = Vector2(900, 650)
@@ -92,6 +94,7 @@ theme_override_styles/separator = SubResource("StyleBoxFlat_srb65")
 layout_mode = 2
 
 [node name="Fullscreen" type="CheckBox" parent="Panel/Margin/Content/ScreenSection/ScreenOptions"]
+process_mode = 3
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_663nc")
 text = "Fullscreen"
@@ -196,7 +199,11 @@ theme_override_constants/separation = 30
 theme_override_styles/separator = SubResource("StyleBoxEmpty_g5vgl")
 
 [node name="Apply" type="Button" parent="Panel/Margin/Content"]
+process_mode = 3
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("5_kftxf")
 text = "Apply"
+
+[connection signal="toggled" from="Panel/Margin/Content/ScreenSection/ScreenOptions/Fullscreen" to="." method="_on_fullscreen_toggled"]
+[connection signal="button_down" from="Panel/Margin/Content/Apply" to="." method="_on_apply_button_down"]
