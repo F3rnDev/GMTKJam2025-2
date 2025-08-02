@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=4 format=3 uid="uid://bow15ypw4rnvx"]
+
+[ext_resource type="Texture2D" uid="uid://bfojfhmm6m8k1" path="res://Assets/Art/loot_icon.png" id="1_lu16n"]
+[ext_resource type="Script" uid="uid://bxgrjxnv7vipl" path="res://Scripts/cardData.gd" id="2_kowwi"]
+[ext_resource type="Theme" uid="uid://vhypvojj45yl" path="res://Assets/Themes/Panel/panelOption03Upgrades.tres" id="3_2kp4a"]
+
+[resource]
+script = ExtResource("2_kowwi")
+theme = ExtResource("3_2kp4a")
+title = "LOOT"
+image = ExtResource("1_lu16n")
+description = "Increases 2 coins for each enemy defeated
+
+For those who are greedy"
+cost = 150
+upgradeType = "Loot"
+metadata/_custom_type_script = "uid://bxgrjxnv7vipl"

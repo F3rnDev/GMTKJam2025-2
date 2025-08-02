@@ -2,15 +2,22 @@ extends AnimatedSprite2D
 
 @onready var projectileRef = preload("res://Nodes/projectile.tscn")
 @onready var dieParticle = preload("res://Nodes/dieParticle.tscn")
-@export var shootSpeed = 5.0
-
-@export var maxHealth = 3.0
-var health = maxHealth
-
-var currentMoney = 0
+var health = PlayerStats.health
 
 func _ready() -> void:
-	$Speed.wait_time = shootSpeed
+	updateStats()
+	PlayerStats.healthChanged.connect(updateHealth)
+	PlayerStats.attackSpdChanged.connect(updateAttackSpeed)
+
+func updateStats():
+	updateHealth()
+	updateAttackSpeed()
+
+func updateHealth():
+	health = PlayerStats.health
+
+func updateAttackSpeed():
+	$Speed.wait_time = PlayerStats.attackSpeed
 
 func _process(delta: float) -> void:
 	look_at(get_global_mouse_position())
@@ -55,5 +62,5 @@ func spawnDieParticle():
 	get_tree().current_scene.add_child(particle)
 
 func setMoney(amount):
-	#IntegrateUpdate Later
-	currentMoney += amount
+	var moneyWithLoot = amount * (1.25 ** (PlayerStats.loot - 1))
+	PlayerStats.coinAmount += moneyWithLoot

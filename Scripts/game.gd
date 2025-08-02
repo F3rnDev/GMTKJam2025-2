@@ -13,10 +13,12 @@ var roundRunning = false
 
 func _ready() -> void:
 	startWave()
+	PlayerStats.healthChanged.connect(updatePlayerLife)
+	PlayerStats.coinAmountChanged.connect(setPlayerMoney)
 
 func startWave():
 	$SpawnTime.wait_time = enemySpawnTime / wave
-	enemyCount = enemyMax * wave
+	enemyCount = enemyMax + (wave - 1) * 2
 	roundRunning = true
 	
 	setInfoUI()
@@ -31,14 +33,17 @@ func updateEnemiesLeft():
 	$"CanvasLayer/Ui/Enemies Left".text = "- Enemies Left -\n" + str(enemyCount-enemyDead)  + "/" + str(enemyCount)
 
 func updatePlayerLife():
-	$"CanvasLayer/Ui/LifeBar".max_value = $Player.maxHealth
+	$"CanvasLayer/Ui/LifeBar".max_value = PlayerStats.health
 	$"CanvasLayer/Ui/LifeBar".value = $Player.health
-	$"CanvasLayer/Ui/LifeBar/HBoxContainer/MaxLifeValue".text = str(roundi($Player.maxHealth))
-	$"CanvasLayer/Ui/LifeBar/HBoxContainer/LifeValue".text = str(roundi($Player.health))
+	$"CanvasLayer/Ui/LifeBar/HBoxContainer/MaxLifeValue".text = str(snapped(PlayerStats.health, 0.1))
+	$"CanvasLayer/Ui/LifeBar/HBoxContainer/LifeValue".text = str(snapped($Player.health, 0.1))
 
 func updatePlayerMoney(amount):
 	$Player.setMoney(amount)
-	$"CanvasLayer/Ui/HBoxContainer/Label".text = str($Player.currentMoney)
+	setPlayerMoney()
+
+func setPlayerMoney():
+	$"CanvasLayer/Ui/HBoxContainer/Label".text = str(PlayerStats.coinAmount)
 
 func shake():
 	$GameCamera.shakeCamera()
@@ -49,20 +54,18 @@ func SetNewWave():
 	enemyDead = 0
 	enemiesSpawned = 0
 	
-	startWave()
+	$CanvasLayer/Upgrades.visible = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if $SpawnTime.is_stopped() and roundRunning and enemiesSpawned < enemyCount:
 		spawnEnemy()
 	
-	if enemyDead == enemyCount:
+	if enemyDead == enemyCount and roundRunning:
 		SetNewWave()
 
 func spawnEnemy():
 	enemiesSpawned += 1
-	
-	print(enemiesSpawned, "/", enemyCount)
 	
 	var enemyInstance = enemy.instantiate()
 	enemyInstance.playerRef = $Player
@@ -76,3 +79,6 @@ func spawnEnemy():
 	add_child(enemyInstance)
 	
 	$SpawnTime.start()
+
+func _on_upgrades_continue_game() -> void:
+	startWave()

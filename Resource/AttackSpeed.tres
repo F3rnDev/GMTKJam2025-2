@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=4 format=3 uid="uid://j5nb6288ordc"]
+
+[ext_resource type="Texture2D" uid="uid://fns3clajv3py" path="res://Assets/Art/attack_speed_icon.png" id="1_vkb4l"]
+[ext_resource type="Script" uid="uid://bxgrjxnv7vipl" path="res://Scripts/cardData.gd" id="2_qqjqy"]
+[ext_resource type="Theme" uid="uid://cnta1fssn1ngp" path="res://Assets/Themes/Panel/panelOption02Upgrades.tres" id="3_8t3s5"]
+
+[resource]
+script = ExtResource("2_qqjqy")
+theme = ExtResource("3_8t3s5")
+title = "ATTACK
+SPEED"
+image = ExtResource("1_vkb4l")
+description = "Increases attack speed by 5%
+
+For those who can't wait"
+cost = 100
+upgradeType = "AtkSpeed"
+metadata/_custom_type_script = "uid://bxgrjxnv7vipl"

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="CardData" load_steps=4 format=3 uid="uid://db0otabrr3icy"]
+
+[ext_resource type="Texture2D" uid="uid://dg3j5drlyl2hm" path="res://Assets/Art/heart_icon.png" id="1_8aytk"]
+[ext_resource type="Script" uid="uid://bxgrjxnv7vipl" path="res://Scripts/cardData.gd" id="2_d04fv"]
+[ext_resource type="Theme" uid="uid://dscf681dqd0c6" path="res://Assets/Themes/Panel/panelOption01Upgrades.tres" id="3_tnxxu"]
+
+[resource]
+script = ExtResource("2_d04fv")
+theme = ExtResource("3_tnxxu")
+title = "LIFE"
+image = ExtResource("1_8aytk")
+description = "Increases health by 10%
+
+Perfect for those who want to go further
+"
+cost = 120
+upgradeType = "Health"
+metadata/_custom_type_script = "uid://bxgrjxnv7vipl"

@@ -19,7 +19,6 @@ animations = [{
 [node name="Player" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_onrkg")
 script = ExtResource("2_onrkg")
-shootSpeed = 1.0
 
 [node name="Hitbox" type="Area2D" parent="."]
 
