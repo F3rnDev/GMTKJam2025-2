@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c7efvr77mr45u"]
 
 [ext_resource type="Script" uid="uid://bhovn2pas667j" path="res://Scripts/Screen/main_menu.gd" id="1_1ehe0"]
-[ext_resource type="LabelSettings" uid="uid://emksdbqkuufj" path="res://Assets/Themes/Label/Options/tittleSettings.tres" id="1_48xlc"]
+[ext_resource type="Texture2D" uid="uid://dtaipiitr5men" path="res://Assets/Art/title.png" id="2_1ehe0"]
 [ext_resource type="Theme" uid="uid://basi5lxyxy175" path="res://Assets/Themes/Button/buttonMainMenu.tres" id="2_48xlc"]
 
 [node name="MainMenu" type="Control"]
@@ -13,43 +13,44 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1ehe0")
 
-[node name="Content" type="VBoxContainer" parent="."]
+[node name="Content" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(800, 500)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -180.0
-offset_top = -212.5
-offset_right = 180.0
-offset_bottom = 212.5
+offset_left = -350.0
+offset_top = -250.0
+offset_right = 350.0
+offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 50
+theme_override_constants/separation = 70
 
-[node name="Title" type="Label" parent="Content"]
+[node name="TextureRect" type="TextureRect" parent="Content"]
 layout_mode = 2
-text = "BREAK
-THE
-LOOP"
-label_settings = ExtResource("1_48xlc")
-horizontal_alignment = 1
-vertical_alignment = 1
+size_flags_horizontal = 3
+texture = ExtResource("2_1ehe0")
+stretch_mode = 5
 
 [node name="Buttons" type="VBoxContainer" parent="Content"]
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 10
+size_flags_vertical = 4
 theme_override_constants/separation = 40
 
 [node name="Start" type="Button" parent="Content/Buttons"]
 layout_mode = 2
+size_flags_vertical = 4
 mouse_default_cursor_shape = 2
 theme = ExtResource("2_48xlc")
 text = "Start"
 
 [node name="Options" type="Button" parent="Content/Buttons"]
 layout_mode = 2
+size_flags_vertical = 4
 mouse_default_cursor_shape = 2
 theme = ExtResource("2_48xlc")
 text = "Options"
@@ -57,6 +58,7 @@ text = "Options"
 [node name="Quit" type="Button" parent="Content/Buttons"]
 process_mode = 3
 layout_mode = 2
+size_flags_vertical = 4
 mouse_default_cursor_shape = 2
 theme = ExtResource("2_48xlc")
 text = "Quit"
