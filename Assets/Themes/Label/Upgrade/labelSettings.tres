@@ -1,0 +1,6 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bjmu45x5kyi2j"]
+
+[ext_resource type="FontFile" uid="uid://burjh4d37tdqd" path="res://Assets/Font/PressStart2P-Regular.ttf" id="1_cyuro"]
+
+[resource]
+font = ExtResource("1_cyuro")

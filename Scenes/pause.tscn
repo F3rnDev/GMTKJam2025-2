@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dgebshndmyuv1"]
 
-[ext_resource type="LabelSettings" uid="uid://emksdbqkuufj" path="res://Assets/Themes/Label/tittleSettings.tres" id="1_l2mpd"]
+[ext_resource type="LabelSettings" uid="uid://emksdbqkuufj" path="res://Assets/Themes/Label/Options/tittleSettings.tres" id="1_l2mpd"]
 [ext_resource type="Theme" uid="uid://basi5lxyxy175" path="res://Assets/Themes/Button/buttonMainMenu.tres" id="2_5a6ek"]
 
 [node name="Pause" type="Control"]

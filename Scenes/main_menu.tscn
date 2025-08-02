@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c7efvr77mr45u"]
 
-[ext_resource type="LabelSettings" uid="uid://emksdbqkuufj" path="res://Assets/Themes/Label/tittleSettings.tres" id="1_48xlc"]
+[ext_resource type="LabelSettings" uid="uid://emksdbqkuufj" path="res://Assets/Themes/Label/Options/tittleSettings.tres" id="1_48xlc"]
 [ext_resource type="Theme" uid="uid://basi5lxyxy175" path="res://Assets/Themes/Button/buttonMainMenu.tres" id="2_48xlc"]
 
 [node name="MainMenu" type="Control"]

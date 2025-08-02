@@ -1,25 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://dmt5x87e0n4s4"]
+[gd_scene load_steps=10 format=3 uid="uid://dmt5x87e0n4s4"]
 
-[ext_resource type="LabelSettings" uid="uid://cmorhdd1o2ta2" path="res://Assets/Themes/Label/tittleOptionSettings.tres" id="1_ww8vx"]
-[ext_resource type="LabelSettings" uid="uid://dd0p8lijyqm0u" path="res://Assets/Themes/Label/tittle02OptionSettings.tres" id="2_kftxf"]
+[ext_resource type="Theme" uid="uid://donkpon7h18o1" path="res://Assets/Themes/Panel/panelOptions.tres" id="1_663nc"]
+[ext_resource type="LabelSettings" uid="uid://cmorhdd1o2ta2" path="res://Assets/Themes/Label/Options/tittleOptionSettings.tres" id="1_ww8vx"]
+[ext_resource type="LabelSettings" uid="uid://dd0p8lijyqm0u" path="res://Assets/Themes/Label/Options/tittle02OptionSettings.tres" id="2_kftxf"]
 [ext_resource type="FontFile" uid="uid://burjh4d37tdqd" path="res://Assets/Font/PressStart2P-Regular.ttf" id="3_663nc"]
-[ext_resource type="LabelSettings" uid="uid://m4ebuuqftqex" path="res://Assets/Themes/Label/tittle03OptionSettings.tres" id="4_hvj8k"]
+[ext_resource type="LabelSettings" uid="uid://m4ebuuqftqex" path="res://Assets/Themes/Label/Options/tittle03OptionSettings.tres" id="4_hvj8k"]
 [ext_resource type="Theme" uid="uid://bv055b41yth6m" path="res://Assets/Themes/Button/buttonOptions.tres" id="5_kftxf"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_38txh"]
-bg_color = Color(2.21401e-06, 0.587728, 0.775904, 0.694118)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-
-[sub_resource type="Theme" id="Theme_5a0sy"]
-Panel/styles/panel = SubResource("StyleBoxFlat_38txh")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g5vgl"]
 
@@ -42,20 +28,20 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="."]
-custom_minimum_size = Vector2(800, 600)
+custom_minimum_size = Vector2(900, 650)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.152778
-anchor_top = 0.037037
-anchor_right = 0.847222
-anchor_bottom = 0.962963
-offset_left = 380.0
-offset_top = 280.0
-offset_right = -380.0
-offset_bottom = -280.0
+anchor_left = 0.214286
+anchor_top = 0.0714286
+anchor_right = 0.785714
+anchor_bottom = 0.928571
+offset_left = 293.889
+offset_top = 255.926
+offset_right = -293.889
+offset_bottom = -255.926
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_5a0sy")
+theme = ExtResource("1_663nc")
 metadata/_edit_use_anchors_ = true
 
 [node name="Margin" type="MarginContainer" parent="Panel"]
