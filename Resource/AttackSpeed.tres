@@ -10,9 +10,9 @@ theme = ExtResource("3_8t3s5")
 title = "ATTACK
 SPEED"
 image = ExtResource("1_vkb4l")
-description = "Increases attack speed by 5%
+description = "- Increases attack speed by 5%
 
 For those who can't wait"
-cost = 100
+cost = 80
 upgradeType = "AtkSpeed"
 metadata/_custom_type_script = "uid://bxgrjxnv7vipl"

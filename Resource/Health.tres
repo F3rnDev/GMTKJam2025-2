@@ -9,10 +9,11 @@ script = ExtResource("2_d04fv")
 theme = ExtResource("3_tnxxu")
 title = "LIFE"
 image = ExtResource("1_8aytk")
-description = "Increases health by 10%
+description = "- Increases health by 25%
 
-Perfect for those who want to go further
-"
+- Heal to max HP
+
+Perfect for those who want to go further"
 cost = 120
 upgradeType = "Health"
 metadata/_custom_type_script = "uid://bxgrjxnv7vipl"

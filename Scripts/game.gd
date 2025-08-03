@@ -36,7 +36,7 @@ func updateEnemiesLeft():
 	$"CanvasLayer/Ui/Enemies Left".text = "- Enemies Left -\n" + str(enemyCount-enemyDead)  + "/" + str(enemyCount)
 
 func updatePlayerLife():
-	var maxHealth = PlayerStats.defaultHealth * (1.10 ** (PlayerStats.health - 1))
+	var maxHealth = PlayerStats.defaultHealth * (1.25 ** (PlayerStats.health - 1))
 	$"CanvasLayer/Ui/LifeBar".max_value = maxHealth
 	$"CanvasLayer/Ui/LifeBar".value = $Player.health
 	$"CanvasLayer/Ui/LifeBar/HBoxContainer/MaxLifeValue".text = str(snapped(maxHealth, 0.1))

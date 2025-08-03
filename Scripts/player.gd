@@ -14,7 +14,7 @@ func updateStats():
 	updateAttackSpeed()
 
 func updateHealth():
-	health = PlayerStats.defaultHealth * (1.10 ** (PlayerStats.health - 1))
+	health = PlayerStats.defaultHealth * (1.25 ** (PlayerStats.health - 1))
 
 func updateAttackSpeed():
 	$Speed.wait_time = PlayerStats.defaultAttackSpeed * (0.95 ** (PlayerStats.attackSpeed - 1))

@@ -9,7 +9,7 @@ script = ExtResource("2_kowwi")
 theme = ExtResource("3_2kp4a")
 title = "LOOT"
 image = ExtResource("1_lu16n")
-description = "Increases 2 coins for each enemy defeated
+description = "- Increases coins gained by 25%
 
 For those who are greedy"
 cost = 150
