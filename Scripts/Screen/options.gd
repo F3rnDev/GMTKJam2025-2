@@ -2,6 +2,11 @@ extends Control
 
 func _ready() -> void:
 	setAudioBusValues()
+	
+	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
+		$Panel/Margin/Content/ScreenSection/ScreenOptions/Fullscreen.button_pressed = true
+	else:
+		$Panel/Margin/Content/ScreenSection/ScreenOptions/Fullscreen.button_pressed = false
 
 func setAudioBusValues():
 	var masterAudioID = AudioServer.get_bus_index("Master")

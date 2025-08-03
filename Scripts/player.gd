@@ -82,4 +82,4 @@ func spawnDieParticle():
 
 func setMoney(amount):
 	var moneyWithLoot = amount * (1.25 ** (PlayerStats.loot - 1))
-	PlayerStats.coinAmount += moneyWithLoot
+	PlayerStats.coinAmount += roundi(moneyWithLoot)

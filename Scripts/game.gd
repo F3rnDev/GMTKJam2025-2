@@ -14,6 +14,7 @@ var roundRunning = false
 var gameOver = false
 
 func _ready() -> void:
+	PlayerStats.resetEverything()
 	startWave()
 	PlayerStats.healthChanged.connect(updatePlayerLife)
 	PlayerStats.coinAmountChanged.connect(setPlayerMoney)
@@ -72,7 +73,6 @@ func _process(delta: float) -> void:
 	if gameOver and Input.is_action_just_pressed("Reload"):
 		Transition.transitionToScene("res://Nodes/game.tscn")
 		Music.isGameOver = false
-		PlayerStats.resetEverything()
 	
 	if gameOver and !$CanvasLayer/Label/AnimationPlayer.is_playing():
 		$CanvasLayer/Label/AnimationPlayer.play("idle")
