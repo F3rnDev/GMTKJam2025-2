@@ -1,11 +1,13 @@
 extends Control
 
+var gameOver = false
+
 func _ready() -> void:
 	if OS.has_feature("web"):
 		$Content/Buttons/Quit.queue_free()
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("Cancel") and visible == false:
+	if Input.is_action_just_pressed("Cancel") and visible == false and !gameOver:
 		visible = true
 		get_tree().paused = true
 		Music.setMusic(Music.MusicType.Menu)

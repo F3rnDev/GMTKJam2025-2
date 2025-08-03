@@ -78,6 +78,7 @@ func _process(delta: float) -> void:
 	
 	if gameOver and !$CanvasLayer/Label/AnimationPlayer.is_playing():
 		$CanvasLayer/Label/AnimationPlayer.play("idle")
+		$CanvasLayer/PauseMenu.gameOver = true
 
 func spawnEnemy():
 	enemiesSpawned += 1

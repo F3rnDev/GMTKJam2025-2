@@ -57,7 +57,7 @@ func shootBullet():
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Enemy"):
-		area.get_parent().killEnemy()
+		area.get_parent().queue_free()
 		
 		spawnDieParticle()
 		receiveHit()
@@ -67,6 +67,7 @@ func receiveHit():
 	
 	get_parent().updatePlayerLife()
 	get_parent().shake()
+	get_parent().enemiesSpawned -= 1
 	
 	if health <= 0:
 		get_parent().roundRunning = false

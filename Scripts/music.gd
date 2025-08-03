@@ -9,7 +9,9 @@ var audioID = AudioServer.get_bus_index("Music")
 var pitch = AudioServer.get_bus_effect(audioID, 0)
 
 func setMusic(music):
-	get_stream_playback().switch_to_clip(music);
+	if curMusic != music:
+		curMusic = music
+		get_stream_playback().switch_to_clip(curMusic);
 
 func _process(delta: float) -> void:
 	if isGameOver:
