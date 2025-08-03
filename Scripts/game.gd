@@ -13,6 +13,8 @@ var roundRunning = false
 
 var gameOver = false
 
+var enemies = []
+
 func _init() -> void:
 	PlayerStats.resetEverything()
 
@@ -64,6 +66,12 @@ func SetNewWave():
 	enemyDead = 0
 	enemiesSpawned = 0
 	
+	for enemy in enemies:
+		if is_instance_valid(enemy):
+			enemy.queue_free()
+	
+	enemies.clear()
+	
 	$CanvasLayer/Upgrades.visible = true
 	$CanvasLayer/Upgrades/AnimationPlayer.play("Appear")
 	Music.setMusic(Music.MusicType.Menu)
@@ -97,6 +105,7 @@ func spawnEnemy():
 	enemyInstance.global_position = spawner.global_position
 	
 	add_child(enemyInstance)
+	enemies.append(enemyInstance)
 	
 	$SpawnTime.start()
 
