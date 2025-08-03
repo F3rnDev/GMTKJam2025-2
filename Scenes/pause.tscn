@@ -1,10 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://dgebshndmyuv1"]
+[gd_scene load_steps=7 format=3 uid="uid://dgebshndmyuv1"]
 
 [ext_resource type="Script" uid="uid://d143dfsw3vh3w" path="res://Scripts/Screen/pause.gd" id="1_5a6ek"]
-[ext_resource type="LabelSettings" uid="uid://emksdbqkuufj" path="res://Assets/Themes/Label/Options/tittleSettings.tres" id="1_l2mpd"]
+[ext_resource type="FontFile" uid="uid://burjh4d37tdqd" path="res://Assets/Font/PressStart2P-Regular.ttf" id="2_3fojq"]
 [ext_resource type="Theme" uid="uid://basi5lxyxy175" path="res://Assets/Themes/Button/buttonMainMenu.tres" id="2_5a6ek"]
 [ext_resource type="AudioStream" uid="uid://c0utk104dqgq3" path="res://Assets/Audio/UIAccept.mp3" id="4_3fojq"]
 [ext_resource type="AudioStream" uid="uid://q48pf4wdpbwm" path="res://Assets/Audio/UIMove.mp3" id="5_nsogc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nsogc"]
+font = ExtResource("2_3fojq")
+font_size = 64
+font_color = Color(0, 0, 0, 1)
+outline_size = 8
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -43,7 +49,7 @@ theme_override_constants/separation = 45
 [node name="Label" type="Label" parent="Content"]
 layout_mode = 2
 text = "- Paused -"
-label_settings = ExtResource("1_l2mpd")
+label_settings = SubResource("LabelSettings_nsogc")
 
 [node name="Buttons" type="VBoxContainer" parent="Content"]
 layout_mode = 2

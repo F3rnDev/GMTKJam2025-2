@@ -30,8 +30,8 @@ func _on_interaction_mouse_exited() -> void:
 func _on_interaction_gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed("Shoot"):
 		if PlayerStats.coinAmount >= cardPrice:
-			PlayerStats.updateCoinAmount(PlayerStats.coinAmount - data.cost)
 			addUpgrade()
+			PlayerStats.updateCoinAmount(PlayerStats.coinAmount - data.cost)
 
 func addUpgrade():
 	$Audio/Accept.play()

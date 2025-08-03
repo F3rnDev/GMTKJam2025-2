@@ -7,8 +7,14 @@ func _ready() -> void:
 
 func _on_button_button_down() -> void:
 	$Audio/Accept.play()
-	visible = false
-	continueGame.emit()
+	$AnimationPlayer.play("Disapear")
+	
 
 func _on_button_mouse_entered() -> void:
 	$Audio/Move.play()
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "Disapear":
+		visible = false
+		continueGame.emit()

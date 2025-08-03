@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bo7nvtlqyv7qd"]
+[gd_scene load_steps=13 format=3 uid="uid://bo7nvtlqyv7qd"]
 
 [ext_resource type="Script" uid="uid://dhdkgj0l4fpog" path="res://Scripts/Screen/upgradeScreen.gd" id="1_mi3g6"]
 [ext_resource type="Theme" uid="uid://di3qk7otridoe" path="res://Assets/Themes/Panel/panelUpgrades.tres" id="1_qnnf3"]
@@ -8,6 +8,94 @@
 [ext_resource type="AudioStream" uid="uid://q48pf4wdpbwm" path="res://Assets/Audio/UIMove.mp3" id="7_sy0g7"]
 [ext_resource type="AudioStream" uid="uid://c0utk104dqgq3" path="res://Assets/Audio/UIAccept.mp3" id="8_copim"]
 [ext_resource type="Theme" uid="uid://bv055b41yth6m" path="res://Assets/Themes/Button/buttonOptions.tres" id="11_jr3vf"]
+
+[sub_resource type="Animation" id="Animation_sy0g7"]
+resource_name = "Appear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.153893, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.494118)]
+}
+
+[sub_resource type="Animation" id="Animation_copim"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bbjwf"]
+resource_name = "Disapear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Panel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2.21914, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.00136e-05, 1.00136e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Background:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0.494118), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_copim"]
+_data = {
+&"Appear": SubResource("Animation_sy0g7"),
+&"Disapear": SubResource("Animation_bbjwf"),
+&"RESET": SubResource("Animation_copim")
+}
 
 [node name="Upgrades" type="Control"]
 layout_mode = 3
@@ -25,7 +113,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.494118)
+color = Color(0, 0, 0, 0)
 
 [node name="Panel" type="Panel" parent="."]
 custom_minimum_size = Vector2(900, 500)
@@ -41,6 +129,8 @@ offset_right = 450.0
 offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(450, 250)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("1_qnnf3")
@@ -97,5 +187,11 @@ bus = &"Sfx"
 stream = ExtResource("8_copim")
 bus = &"Sfx"
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_copim")
+}
+
 [connection signal="button_down" from="Panel/Button" to="." method="_on_button_button_down"]
 [connection signal="mouse_entered" from="Panel/Button" to="." method="_on_button_mouse_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

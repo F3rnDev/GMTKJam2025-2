@@ -8,6 +8,9 @@ var isGameOver = false
 var audioID = AudioServer.get_bus_index("Music")
 var pitch = AudioServer.get_bus_effect(audioID, 0)
 
+func _ready() -> void:
+	AudioServer.set_bus_volume_db(audioID, linear_to_db(0.5))
+
 func setMusic(music):
 	if curMusic != music:
 		curMusic = music

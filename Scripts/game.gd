@@ -19,7 +19,7 @@ func _init() -> void:
 func _ready() -> void:
 	startWave()
 	PlayerStats.healthChanged.connect(updatePlayerLife)
-	PlayerStats.coinAmountChanged.connect(setPlayerMoney)
+	PlayerStats.coinAmountChanged.connect(setPlayerStats)
 
 func startWave():
 	$SpawnTime.wait_time = enemySpawnTime / wave
@@ -47,10 +47,13 @@ func updatePlayerLife():
 
 func updatePlayerMoney(amount):
 	$Player.setMoney(amount)
-	setPlayerMoney()
+	setPlayerStats()
 
-func setPlayerMoney():
+func setPlayerStats():
 	$"CanvasLayer/Ui/HBoxContainer/Label".text = str(PlayerStats.coinAmount)
+	$"CanvasLayer/Ui/LootContainer/Label".text = "Lvl " + str(PlayerStats.loot)
+	var attackSpeed = PlayerStats.defaultAttackSpeed * (0.95 ** (PlayerStats.attackSpeed - 1))
+	$"CanvasLayer/Ui/SwordContainer/Label".text = str(snapped(attackSpeed, 0.01))
 
 func shake():
 	$GameCamera.shakeCamera()
@@ -62,6 +65,7 @@ func SetNewWave():
 	enemiesSpawned = 0
 	
 	$CanvasLayer/Upgrades.visible = true
+	$CanvasLayer/Upgrades/AnimationPlayer.play("Appear")
 	Music.setMusic(Music.MusicType.Menu)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

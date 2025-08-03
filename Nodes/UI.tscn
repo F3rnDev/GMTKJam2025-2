@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://ba5ns1vmm5uri"]
+[gd_scene load_steps=11 format=3 uid="uid://ba5ns1vmm5uri"]
 
 [ext_resource type="FontFile" uid="uid://burjh4d37tdqd" path="res://Assets/Font/PressStart2P-Regular.ttf" id="1_8ud23"]
 [ext_resource type="Texture2D" uid="uid://dvkewiavm3afl" path="res://Assets/Art/money.png" id="2_beqv6"]
+[ext_resource type="Texture2D" uid="uid://db7t61xc8np8o" path="res://Assets/Art/lootMini.png" id="3_omug6"]
+[ext_resource type="Texture2D" uid="uid://iaa4vb3moi2w" path="res://Assets/Art/swordMini.png" id="4_xlqnh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ktit6"]
 bg_color = Color(0, 0, 0, 1)
@@ -123,13 +125,14 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -106.0
-offset_top = -42.0
-offset_bottom = -5.0
+offset_left = -123.0
+offset_top = -45.33
+offset_right = -17.0
+offset_bottom = -8.33002
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_constants/separation = 5
-alignment = 1
+alignment = 2
 
 [node name="Label" type="Label" parent="HBoxContainer"]
 layout_mode = 2
@@ -140,5 +143,61 @@ vertical_alignment = 1
 [node name="Coin" type="TextureRect" parent="HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("2_beqv6")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="LootContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -144.0
+offset_top = -101.085
+offset_right = -17.0
+offset_bottom = -64.085
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 10
+alignment = 2
+
+[node name="Label" type="Label" parent="LootContainer"]
+layout_mode = 2
+text = "20"
+label_settings = SubResource("LabelSettings_xlqnh")
+vertical_alignment = 1
+
+[node name="Loot" type="TextureRect" parent="LootContainer"]
+layout_mode = 2
+texture = ExtResource("3_omug6")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="SwordContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -144.0
+offset_top = -164.0
+offset_right = -17.0
+offset_bottom = -127.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 10
+alignment = 2
+
+[node name="Label" type="Label" parent="SwordContainer"]
+layout_mode = 2
+text = "1.0"
+label_settings = SubResource("LabelSettings_xlqnh")
+vertical_alignment = 1
+
+[node name="Sword" type="TextureRect" parent="SwordContainer"]
+layout_mode = 2
+texture = ExtResource("4_xlqnh")
 expand_mode = 2
 stretch_mode = 5
