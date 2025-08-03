@@ -4,10 +4,21 @@ extends AnimatedSprite2D
 @onready var dieParticle = preload("res://Nodes/dieParticle.tscn")
 var health = PlayerStats.defaultHealth
 
+@onready var mouseCooldown = preload("res://Nodes/mouseCooldown.tscn")
+var mouseCooldownInstance
+
 func _ready() -> void:
 	updateStats()
 	PlayerStats.healthChanged.connect(updateHealth)
 	PlayerStats.attackSpdChanged.connect(updateAttackSpeed)
+	
+	setMouseCooldown()
+
+func setMouseCooldown():
+	mouseCooldownInstance = mouseCooldown.instantiate()
+	mouseCooldownInstance.setCooldownMaxTime($Speed.wait_time)
+	
+	get_tree().current_scene.add_child.call_deferred(mouseCooldownInstance)
 
 func updateStats():
 	updateHealth()
@@ -24,6 +35,12 @@ func _process(delta: float) -> void:
 
 	if Input.is_action_pressed("Shoot") and $Speed.is_stopped():
 		shootBullet()
+	
+	if $Speed.is_stopped():
+		mouseCooldownInstance.visible = false
+	else:
+		mouseCooldownInstance.visible = true
+		mouseCooldownInstance.setCooldownCurTime($Speed.time_left)
 
 func shootBullet():
 	$Speed.start()
