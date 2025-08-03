@@ -2,7 +2,7 @@ extends AnimatedSprite2D
 
 @onready var projectileRef = preload("res://Nodes/projectile.tscn")
 @onready var dieParticle = preload("res://Nodes/dieParticle.tscn")
-var health = PlayerStats.health
+var health = PlayerStats.defaultHealth
 
 func _ready() -> void:
 	updateStats()
@@ -14,10 +14,10 @@ func updateStats():
 	updateAttackSpeed()
 
 func updateHealth():
-	health = PlayerStats.health
+	health = PlayerStats.defaultHealth * (1.10 ** (PlayerStats.health - 1))
 
 func updateAttackSpeed():
-	$Speed.wait_time = PlayerStats.attackSpeed
+	$Speed.wait_time = PlayerStats.defaultAttackSpeed * (0.95 ** (PlayerStats.attackSpeed - 1))
 
 func _process(delta: float) -> void:
 	look_at(get_global_mouse_position())
@@ -53,6 +53,8 @@ func receiveHit():
 	
 	if health <= 0:
 		get_parent().roundRunning = false
+		Music.isGameOver = true
+		get_parent().gameOver = true
 		queue_free()
 
 func spawnDieParticle():

@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://criia0jb06w0n"]
+
+[ext_resource type="AudioStream" uid="uid://cg1lbqcr18a6l" path="res://Assets/Audio/Music/Menu.mp3" id="1_bltp6"]
+[ext_resource type="AudioStream" uid="uid://i4hgq26v16px" path="res://Assets/Audio/Music/Game.mp3" id="2_tcnw6"]
+[ext_resource type="Script" uid="uid://dokbb5epm3r14" path="res://Scripts/music.gd" id="3_tcnw6"]
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_u8dld"]
+clip_count = 2
+clip_0/name = &"Menu"
+clip_0/stream = ExtResource("1_bltp6")
+clip_0/auto_advance = 0
+clip_1/name = &"Game"
+clip_1/stream = ExtResource("2_tcnw6")
+clip_1/auto_advance = 0
+_transitions = {
+Vector2i(-1, -1): {
+"fade_beats": 1.0,
+"fade_mode": 3,
+"from_time": 2,
+"to_time": 0
+},
+Vector2i(-1, 0): {
+"fade_beats": 1.0,
+"fade_mode": 3,
+"from_time": 2,
+"to_time": 0
+},
+Vector2i(-1, 1): {
+"fade_beats": 1.0,
+"fade_mode": 3,
+"from_time": 2,
+"to_time": 0
+}
+}
+
+[node name="Music" type="AudioStreamPlayer"]
+process_mode = 3
+stream = SubResource("AudioStreamInteractive_u8dld")
+volume_db = -2.0
+autoplay = true
+bus = &"Music"
+script = ExtResource("3_tcnw6")

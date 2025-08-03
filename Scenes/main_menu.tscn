@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://c7efvr77mr45u"]
+[gd_scene load_steps=6 format=3 uid="uid://c7efvr77mr45u"]
 
 [ext_resource type="Script" uid="uid://bhovn2pas667j" path="res://Scripts/Screen/main_menu.gd" id="1_1ehe0"]
 [ext_resource type="Texture2D" uid="uid://dtaipiitr5men" path="res://Assets/Art/title.png" id="2_1ehe0"]
 [ext_resource type="Theme" uid="uid://basi5lxyxy175" path="res://Assets/Themes/Button/buttonMainMenu.tres" id="2_48xlc"]
+[ext_resource type="AudioStream" uid="uid://c0utk104dqgq3" path="res://Assets/Audio/UIAccept.mp3" id="4_n45e2"]
+[ext_resource type="AudioStream" uid="uid://q48pf4wdpbwm" path="res://Assets/Audio/UIMove.mp3" id="5_opfnp"]
 
 [node name="MainMenu" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -63,6 +66,22 @@ mouse_default_cursor_shape = 2
 theme = ExtResource("2_48xlc")
 text = "Quit"
 
+[node name="Audio" type="Node" parent="."]
+
+[node name="Accept" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("4_n45e2")
+bus = &"Sfx"
+
+[node name="Move" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("5_opfnp")
+bus = &"Sfx"
+
 [connection signal="button_down" from="Content/Buttons/Start" to="." method="_on_start_button_down"]
+[connection signal="focus_entered" from="Content/Buttons/Start" to="." method="_on_focus_entered"]
+[connection signal="mouse_entered" from="Content/Buttons/Start" to="." method="_on_focus_entered"]
 [connection signal="button_down" from="Content/Buttons/Options" to="." method="_on_options_button_down"]
+[connection signal="focus_entered" from="Content/Buttons/Options" to="." method="_on_focus_entered"]
+[connection signal="mouse_entered" from="Content/Buttons/Options" to="." method="_on_focus_entered"]
 [connection signal="button_down" from="Content/Buttons/Quit" to="." method="_on_quit_button_down"]
+[connection signal="focus_entered" from="Content/Buttons/Quit" to="." method="_on_focus_entered"]
+[connection signal="mouse_entered" from="Content/Buttons/Quit" to="." method="_on_focus_entered"]

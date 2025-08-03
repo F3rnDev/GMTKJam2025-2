@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ma877nfxlf16"]
+[gd_scene load_steps=13 format=3 uid="uid://ma877nfxlf16"]
 
 [ext_resource type="Script" uid="uid://b6xtaavgwps3f" path="res://Scripts/game.gd" id="1_1sokt"]
 [ext_resource type="PackedScene" uid="uid://bk1kejl534llf" path="res://Nodes/player.tscn" id="1_80nbo"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dxw1rbt8ceqkj" path="res://Scripts/game_camera.gd" id="3_wi60h"]
 [ext_resource type="PackedScene" uid="uid://bo7nvtlqyv7qd" path="res://Scenes/upgrades.tscn" id="5_y4gxr"]
 [ext_resource type="PackedScene" uid="uid://dgebshndmyuv1" path="res://Scenes/pause.tscn" id="6_deiy4"]
+[ext_resource type="FontFile" uid="uid://burjh4d37tdqd" path="res://Assets/Font/PressStart2P-Regular.ttf" id="7_424rh"]
 
 [sub_resource type="Environment" id="Environment_s24rg"]
 background_mode = 3
@@ -15,6 +16,50 @@ glow_intensity = 1.93
 glow_strength = 0.92
 glow_bloom = 1.0
 glow_blend_mode = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_fhu7r"]
+font = ExtResource("7_424rh")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+outline_size = 8
+
+[sub_resource type="Animation" id="Animation_fhu7r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_424rh"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h85cu"]
+_data = {
+&"RESET": SubResource("Animation_fhu7r"),
+&"idle": SubResource("Animation_424rh")
+}
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_1sokt")
@@ -69,5 +114,26 @@ visible = false
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_deiy4")]
 visible = false
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -352.0
+offset_top = -16.0
+offset_right = 352.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "- PRESS R TO RESTART -"
+label_settings = SubResource("LabelSettings_fhu7r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Label"]
+libraries = {
+&"": SubResource("AnimationLibrary_h85cu")
+}
 
 [connection signal="continueGame" from="CanvasLayer/Upgrades" to="." method="_on_upgrades_continue_game"]

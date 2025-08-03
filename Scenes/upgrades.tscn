@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bo7nvtlqyv7qd"]
+[gd_scene load_steps=9 format=3 uid="uid://bo7nvtlqyv7qd"]
 
 [ext_resource type="Script" uid="uid://dhdkgj0l4fpog" path="res://Scripts/Screen/upgradeScreen.gd" id="1_mi3g6"]
 [ext_resource type="Theme" uid="uid://di3qk7otridoe" path="res://Assets/Themes/Panel/panelUpgrades.tres" id="1_qnnf3"]
 [ext_resource type="PackedScene" uid="uid://b31uws5qdthau" path="res://Nodes/UpgradeCard.tscn" id="3_bbjwf"]
 [ext_resource type="Resource" uid="uid://db0otabrr3icy" path="res://Resource/Health.tres" id="4_l0xsu"]
 [ext_resource type="Resource" uid="uid://j5nb6288ordc" path="res://Resource/AttackSpeed.tres" id="5_rmsmy"]
+[ext_resource type="AudioStream" uid="uid://q48pf4wdpbwm" path="res://Assets/Audio/UIMove.mp3" id="7_sy0g7"]
+[ext_resource type="AudioStream" uid="uid://c0utk104dqgq3" path="res://Assets/Audio/UIAccept.mp3" id="8_copim"]
 [ext_resource type="Theme" uid="uid://bv055b41yth6m" path="res://Assets/Themes/Button/buttonOptions.tres" id="11_jr3vf"]
 
 [node name="Upgrades" type="Control"]
@@ -83,6 +85,17 @@ offset_bottom = 83.18
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("11_jr3vf")
-text = "Next Wave"
+text = "Next Loop"
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Move" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("7_sy0g7")
+bus = &"Sfx"
+
+[node name="Accept" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("8_copim")
+bus = &"Sfx"
 
 [connection signal="button_down" from="Panel/Button" to="." method="_on_button_button_down"]
+[connection signal="mouse_entered" from="Panel/Button" to="." method="_on_button_mouse_entered"]

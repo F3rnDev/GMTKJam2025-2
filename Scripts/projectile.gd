@@ -7,6 +7,7 @@ var spawnPos: Vector2 = Vector2.ZERO
 func _ready() -> void:
 	global_position = spawnPos
 	rotation = direction.angle()
+	$Shoot.play()
 
 func _process(delta: float) -> void:
 	velocity = direction * bulletSpeed

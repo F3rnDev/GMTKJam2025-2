@@ -6,6 +6,8 @@ var enemySpeed = 100.0
 
 @export var moneyValue = 20
 
+var dead = false
+
 func _physics_process(delta: float) -> void:
 	if playerRef:
 		var targetPos = (playerRef.global_position - global_position).normalized()
@@ -13,14 +15,14 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 
 func _on_hit_hurtbox_area_entered(area: Area2D) -> void:
-	if area.is_in_group("Projectile"):
+	if area.is_in_group("Projectile") and !dead:
+		dead = true
 		area.get_parent().queue_free()
 		get_parent().updatePlayerMoney(moneyValue)
+		spawnDieParticle()
 		killEnemy()
 
 func killEnemy():
-	spawnDieParticle()
-	
 	get_parent().enemyDead += 1
 	get_parent().updateEnemiesLeft()
 	

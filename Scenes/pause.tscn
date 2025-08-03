@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dgebshndmyuv1"]
+[gd_scene load_steps=6 format=3 uid="uid://dgebshndmyuv1"]
 
 [ext_resource type="Script" uid="uid://d143dfsw3vh3w" path="res://Scripts/Screen/pause.gd" id="1_5a6ek"]
 [ext_resource type="LabelSettings" uid="uid://emksdbqkuufj" path="res://Assets/Themes/Label/Options/tittleSettings.tres" id="1_l2mpd"]
 [ext_resource type="Theme" uid="uid://basi5lxyxy175" path="res://Assets/Themes/Button/buttonMainMenu.tres" id="2_5a6ek"]
+[ext_resource type="AudioStream" uid="uid://c0utk104dqgq3" path="res://Assets/Audio/UIAccept.mp3" id="4_3fojq"]
+[ext_resource type="AudioStream" uid="uid://q48pf4wdpbwm" path="res://Assets/Audio/UIMove.mp3" id="5_nsogc"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -64,6 +66,22 @@ mouse_default_cursor_shape = 2
 theme = ExtResource("2_5a6ek")
 text = "Quit"
 
+[node name="Audio" type="Node" parent="."]
+
+[node name="Accept" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("4_3fojq")
+bus = &"Sfx"
+
+[node name="Move" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("5_nsogc")
+bus = &"Sfx"
+
 [connection signal="button_down" from="Content/Buttons/Resume" to="." method="_on_resume_button_down"]
+[connection signal="focus_entered" from="Content/Buttons/Resume" to="." method="_on_focus_entered"]
+[connection signal="mouse_entered" from="Content/Buttons/Resume" to="." method="_on_focus_entered"]
 [connection signal="button_down" from="Content/Buttons/Main Menu" to="." method="_on_main_menu_button_down"]
+[connection signal="focus_entered" from="Content/Buttons/Main Menu" to="." method="_on_focus_entered"]
+[connection signal="mouse_entered" from="Content/Buttons/Main Menu" to="." method="_on_focus_entered"]
 [connection signal="button_down" from="Content/Buttons/Quit" to="." method="_on_quit_button_down"]
+[connection signal="focus_entered" from="Content/Buttons/Quit" to="." method="_on_focus_entered"]
+[connection signal="mouse_entered" from="Content/Buttons/Quit" to="." method="_on_focus_entered"]

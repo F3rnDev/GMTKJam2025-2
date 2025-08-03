@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b31uws5qdthau"]
+[gd_scene load_steps=14 format=3 uid="uid://b31uws5qdthau"]
 
 [ext_resource type="Theme" uid="uid://dscf681dqd0c6" path="res://Assets/Themes/Panel/panelOption01Upgrades.tres" id="1_p5hmg"]
 [ext_resource type="Script" uid="uid://c4tis5ap2q3da" path="res://Scripts/upgrade_card.gd" id="2_h5b53"]
@@ -7,7 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://dg3j5drlyl2hm" path="res://Assets/Art/heart_icon.png" id="3_h5b53"]
 [ext_resource type="Theme" uid="uid://bup75y2ek0q03" path="res://Assets/Themes/RichText/richTextUpgrades.tres" id="4_caov0"]
 [ext_resource type="LabelSettings" uid="uid://bjmu45x5kyi2j" path="res://Assets/Themes/Label/Upgrade/labelSettings.tres" id="5_a3fso"]
+[ext_resource type="FontFile" uid="uid://burjh4d37tdqd" path="res://Assets/Font/PressStart2P-Regular.ttf" id="6_htlf0"]
 [ext_resource type="Texture2D" uid="uid://dvkewiavm3afl" path="res://Assets/Art/money.png" id="7_caov0"]
+[ext_resource type="AudioStream" uid="uid://q48pf4wdpbwm" path="res://Assets/Audio/UIMove.mp3" id="9_m4tn7"]
+[ext_resource type="AudioStream" uid="uid://c0utk104dqgq3" path="res://Assets/Audio/UIAccept.mp3" id="10_htlf0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hj8ga"]
+font = ExtResource("6_htlf0")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h5b53"]
 
@@ -40,6 +46,13 @@ theme_override_constants/margin_bottom = 20
 [node name="Content" type="VBoxContainer" parent="Margin"]
 layout_mode = 2
 
+[node name="Level" type="Label" parent="Margin/Content"]
+layout_mode = 2
+text = "Level 1
+"
+label_settings = SubResource("LabelSettings_hj8ga")
+horizontal_alignment = 2
+
 [node name="Title" type="Label" parent="Margin/Content"]
 custom_minimum_size = Vector2(244, 70)
 layout_mode = 2
@@ -66,7 +79,6 @@ Perfect for those who want to go further
 fit_content = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Margin/Content"]
-custom_minimum_size = Vector2(244, 20)
 layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="Margin/Content/HBoxContainer"]
@@ -78,7 +90,7 @@ stretch_mode = 5
 [node name="Cost" type="Label" parent="Margin/Content/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 8
-text = "R$ 100,00"
+text = "100"
 label_settings = ExtResource("5_a3fso")
 
 [node name="Interaction" type="Panel" parent="."]
@@ -89,6 +101,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_h5b53")
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Move" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("9_m4tn7")
+bus = &"Sfx"
+
+[node name="Accept" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("10_htlf0")
+bus = &"Sfx"
 
 [connection signal="gui_input" from="Interaction" to="." method="_on_interaction_gui_input"]
 [connection signal="mouse_entered" from="Interaction" to="." method="_on_interaction_mouse_entered"]

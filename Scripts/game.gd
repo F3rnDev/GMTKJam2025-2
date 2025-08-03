@@ -11,6 +11,8 @@ var enemyDead = 0
 
 var roundRunning = false
 
+var gameOver = false
+
 func _ready() -> void:
 	startWave()
 	PlayerStats.healthChanged.connect(updatePlayerLife)
@@ -22,9 +24,10 @@ func startWave():
 	roundRunning = true
 	
 	setInfoUI()
+	Music.setMusic(Music.MusicType.Game)
 
 func setInfoUI():
-	$"CanvasLayer/Ui/Wave Count".text = "Wave " + str(wave)
+	$"CanvasLayer/Ui/Wave Count".text = "LOOP " + str(wave)
 	updateEnemiesLeft()
 	updatePlayerLife()
 	updatePlayerMoney(0)
@@ -33,9 +36,10 @@ func updateEnemiesLeft():
 	$"CanvasLayer/Ui/Enemies Left".text = "- Enemies Left -\n" + str(enemyCount-enemyDead)  + "/" + str(enemyCount)
 
 func updatePlayerLife():
-	$"CanvasLayer/Ui/LifeBar".max_value = PlayerStats.health
+	var maxHealth = PlayerStats.defaultHealth * (1.10 ** (PlayerStats.health - 1))
+	$"CanvasLayer/Ui/LifeBar".max_value = maxHealth
 	$"CanvasLayer/Ui/LifeBar".value = $Player.health
-	$"CanvasLayer/Ui/LifeBar/HBoxContainer/MaxLifeValue".text = str(snapped(PlayerStats.health, 0.1))
+	$"CanvasLayer/Ui/LifeBar/HBoxContainer/MaxLifeValue".text = str(snapped(maxHealth, 0.1))
 	$"CanvasLayer/Ui/LifeBar/HBoxContainer/LifeValue".text = str(snapped($Player.health, 0.1))
 
 func updatePlayerMoney(amount):
@@ -55,6 +59,7 @@ func SetNewWave():
 	enemiesSpawned = 0
 	
 	$CanvasLayer/Upgrades.visible = true
+	Music.setMusic(Music.MusicType.Menu)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -63,6 +68,14 @@ func _process(delta: float) -> void:
 	
 	if enemyDead == enemyCount and roundRunning:
 		SetNewWave()
+	
+	if gameOver and Input.is_action_just_pressed("Reload"):
+		Transition.transitionToScene("res://Nodes/game.tscn")
+		Music.isGameOver = false
+		PlayerStats.resetEverything()
+	
+	if gameOver and !$CanvasLayer/Label/AnimationPlayer.is_playing():
+		$CanvasLayer/Label/AnimationPlayer.play("idle")
 
 func spawnEnemy():
 	enemiesSpawned += 1

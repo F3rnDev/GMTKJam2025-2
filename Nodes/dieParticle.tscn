@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqf22sp22yamw"]
+[gd_scene load_steps=6 format=3 uid="uid://cqf22sp22yamw"]
 
 [ext_resource type="Script" uid="uid://bl3luytrn4dmx" path="res://Scripts/die_particle.gd" id="1_l5nf0"]
+[ext_resource type="AudioStream" uid="uid://bf7wsxn7el02i" path="res://Assets/Audio/playerHit.mp3" id="2_e8fnd"]
 
 [sub_resource type="Curve" id="Curve_l5nf0"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.365471, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -31,5 +32,9 @@ one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_k1a5v")
 script = ExtResource("1_l5nf0")
+
+[node name="hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_e8fnd")
+bus = &"Sfx"
 
 [connection signal="finished" from="." to="." method="_on_finished"]
