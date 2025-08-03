@@ -13,8 +13,10 @@ var roundRunning = false
 
 var gameOver = false
 
-func _ready() -> void:
+func _init() -> void:
 	PlayerStats.resetEverything()
+
+func _ready() -> void:
 	startWave()
 	PlayerStats.healthChanged.connect(updatePlayerLife)
 	PlayerStats.coinAmountChanged.connect(setPlayerMoney)
